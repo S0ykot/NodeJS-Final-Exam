@@ -205,6 +205,54 @@ router.post('/deleteRestau/:id', function(req, res){
 	}
 });
 
+router.get('/addFood', function(req, res){
+	
+	if(req.cookies['token'] == 'admin'){
+		userModel.getAllrestau(null,function(result) {
+			res.render('adminHome/addFood', {details:result});
+		})
+		
+	}else{
+		res.redirect('/logout');
+	}
+});
+
+router.post('/addFood', function(req, res){
+	
+	if(req.cookies['token'] == 'admin'){
+		var info = {
+			type : req.body.type,
+			name : req.body.name,
+			r_id : req.body.r_id
+		}
+		userModel.addFood(info,function(status) {
+			if (status) {
+				res.redirect('/adminHome');
+			}
+			else{
+				//res.redirect('/adminHome/');
+				res.send("Hoy nai");
+			}
+		})
+		
+	}else{
+		res.redirect('/logout');
+	}
+});
+
+router.get('/viewFood', function(req, res){
+	
+	if(req.cookies['token'] == 'admin'){
+		userModel.getAllfood(null,function(result) {
+			console.log(result)
+			res.render('adminHome/viewFood', {details:result});
+		})
+		
+	}else{
+		res.redirect('/logout');
+	}
+});
+
 
 
 

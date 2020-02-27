@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Foods</title>
+</head>
+<body>
+<center>
+	<h1>Add food</h1>
+	<form method="post">
+		<table>
+			<tr>
+				<td>Name: </td>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<td>Type: </td>
+				<td><input type="text" name="type"></td>
+			</tr>
+			<tr>
+				<td>Restaurant :</td>
+				<td>
+					<select name="r_id">
+						<% for (var i=0;i<details.length;i++) {%>
+						<option value="<%=details[i].r_id%>"><%=details[i].name%></option>
+						<%}%>
+					</select>
+				</td>
+			</tr>
+			<tr>
+			<td><input type="submit" name="submit" value="Add"></td>
+		</tr>
+		</table>
+	</form>
+	<a href="/adminHome">Back</a>
+</center>
+</body>
+</html>

@@ -126,5 +126,29 @@ module.exports ={
 				callback(false);
 			}
 		});
-	}
+	},
+	foodGetByID: function(data, callback){
+		var	sql = "SELECT * from foods where f_id="+data;
+		db.getResult(sql,function(result){
+			callback(result[0]);
+		});
+	},
+	addFood : function(user, callback){
+		var sql = "INSERT INTO foods VALUES (null,'"+user.name+"','"+user.type+"','"+user.r_id+"')";
+		console.log(sql);
+		db.execute(sql, function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+	getAllfood: function(id, callback){
+		var sql = "select f_id,foods.name 'FN',restaurant.name 'RN',location,type from restaurant,foods where restaurant.r_id=foods.r_id";
+		db.getResult(sql, function(result){
+				callback(result);
+		});
+	},
+
 }
