@@ -126,15 +126,85 @@ router.post('/addRestau', function(req, res){
 router.get('/viewRestau', function(req, res){
 	
 	if(req.cookies['token'] == 'admin'){
-		
 		userModel.getAllrestau(null,function(result) {
-			res.render('adminHome/viewRestau',{details:result});
+			res.render('adminHome/viewRestau', {details:result});
 		})
 		
 	}else{
 		res.redirect('/logout');
 	}
 });
+
+
+router.get('/editRestau/:id', function(req, res){
+	
+	if(req.cookies['token'] == 'admin'){
+		var ID = req.params.id;
+		userModel.restauGetByID(ID,function(result) {
+			res.render('adminHome/editRestau', {details:result});
+		})
+		
+	}else{
+		res.redirect('/logout');
+	}
+});
+
+router.post('/editRestau/:id', function(req, res){
+	
+	if(req.cookies['token'] == 'admin'){
+		var info = {
+			id : req.params.id,
+			name : req.body.name,
+			loc : req.body.loc,
+			sb : req.body.loc
+		}
+		userModel.restauUpdate(info,function(status) {
+			if (status) {
+				res.redirect('/adminHome/viewRestau');
+			}
+			else{
+				res.redirect('/adminHome');
+			}
+		})
+		
+	}else{
+		res.redirect('/logout');
+	}
+});
+
+router.get('/deleteRestau/:id', function(req, res){
+	
+	if(req.cookies['token'] == 'admin'){
+		var ID = req.params.id;
+		userModel.restauGetByID(ID,function(result) {
+			res.render('adminHome/deleteRestau', {details:result});
+		})
+		
+	}else{
+		res.redirect('/logout');
+	}
+});
+
+router.post('/deleteRestau/:id', function(req, res){
+	
+	if(req.cookies['token'] == 'admin'){
+		var ID = req.params.id;
+		userModel.restauDelete(ID,function(status) {
+			if (status) {
+				res.redirect('/adminHome/viewRestau');
+			}
+			else
+			{
+				res.redirect('/adminHome');
+			}
+			
+		})
+		
+	}else{
+		res.redirect('/logout');
+	}
+});
+
 
 
 

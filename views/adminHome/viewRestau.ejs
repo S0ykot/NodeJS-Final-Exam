@@ -13,6 +13,7 @@
 			<th>Name</th>
 			<th>Location</th>
 			<th>Short Details</th>
+			<th>Action</th>
 		</tr>
 		<% for(var i=0; i < details.length; i++){ %>
 		<tr>
@@ -20,6 +21,7 @@
 			<td><%=details[i].name%></td>
 			<td><%=details[i].location%></td>
 			<td><%=details[i].shortBack%></td>
+			<td><a href="editRestau/<%=details[i].r_id%>">Edit</a> <a href="deleteRestau/<%=details[i].r_id%>">Delete</a></td>
 		</tr>
 		<%}%>
 	</table>

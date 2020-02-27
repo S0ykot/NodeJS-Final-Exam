@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Delete Restaurant</title>
+</head>
+<body>
+<center>
+	<h1>Confirm delete ?</h1>
+	<form method="post">
+		<table>
+			<tr>
+				<td>ID</td>
+				<td><%=details.r_id%></td>
+			</tr>
+		<tr>
+			<td>Name: </td>
+			<td><%=details.name%></td>
+		</tr>
+		<tr>
+			<td>Location:</td>
+			<td><%=details.location%></td>
+		</tr>
+		<tr>
+			<td>Short Description : </td>
+			<td><%=details.shortBack%></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" value="Delete">  <a href="/adminHome"><button>Cancel</button></a></td>
+
+		</tr>
+	</table>
+	</form>
+	<a href="/adminHome">Back</a>
+</center>
+</body>
+</html>

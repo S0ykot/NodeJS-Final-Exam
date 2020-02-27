@@ -84,17 +84,10 @@ module.exports ={
 			}
 		});
 	},
-	jobDetails: function(data, callback){
-		var sql="";
-		if (data==null) {
-			sql = "SELECT * from job";
-		}
-		else
-		{
-			sql = "SELECT * from job where companyName like '%"+data+"%' or id like '%"+data+"%' or salary like '%"+data+"%' or jobtTitle like '%"+data+"%' or jobLocation like '%"+data+"%'";
-		}
+	restauGetByID: function(data, callback){
+		var	sql = "SELECT * from restaurant where r_id="+data;
 		db.getResult(sql,function(result){
-			callback(result);
+			callback(result[0]);
 		});
 	},
 
@@ -114,8 +107,8 @@ module.exports ={
 				callback(result);
 		});
 	},
-	jobUpdate: function(user, callback){
-		var sql = "UPDATE job SET companyName='"+user.comName+"' ,jobtTitle='"+user.title+"' , jobLocation='"+user.loc+"',salary='"+user.sal+"' where id="+user.id;
+	restauUpdate: function(user, callback){
+		var sql = "UPDATE restaurant SET name='"+user.name+"' ,location='"+user.loc+"' , shortBack='"+user.sb+"' where r_id="+user.id;
 		db.execute(sql, function(status){
 			if(status){
 				callback(true);
@@ -124,8 +117,8 @@ module.exports ={
 			}
 		});
 	},
-	jobDelete: function(id, callback){
-		var sql = "delete from job where id="+id;
+	restauDelete: function(id, callback){
+		var sql = "delete from restaurant where r_id="+id;
 		db.execute(sql, function(status){
 			if(status){
 				callback(true);
