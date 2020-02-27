@@ -108,15 +108,10 @@ module.exports ={
 			}
 		});
 	},
-	jobGetById: function(id, callback){
-		var sql = "select * from job where id="+id;
+	getAllrestau: function(id, callback){
+		var sql = "select * from restaurant";
 		db.getResult(sql, function(result){
-
-			if(result.length > 0){
-				callback(result[0]);
-			}else{
-				callback(null);
-			}
+				callback(result);
 		});
 	},
 	jobUpdate: function(user, callback){

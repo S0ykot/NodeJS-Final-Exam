@@ -123,5 +123,19 @@ router.post('/addRestau', function(req, res){
 });
 
 
+router.get('/viewRestau', function(req, res){
+	
+	if(req.cookies['token'] == 'admin'){
+		
+		userModel.getAllrestau(null,function(result) {
+			res.render('adminHome/viewRestau',{details:result});
+		})
+		
+	}else{
+		res.redirect('/logout');
+	}
+});
+
+
 
 module.exports = router;

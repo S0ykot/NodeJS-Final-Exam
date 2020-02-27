@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All Restautant</title>
+</head>
+<body>
+
+<center>
+	<h1>All Restautant</h1>
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Location</th>
+			<th>Short Details</th>
+		</tr>
+		<% for(var i=0; i < details.length; i++){ %>
+		<tr>
+			<td><%=details[i].r_id%></td>
+			<td><%=details[i].name%></td>
+			<td><%=details[i].location%></td>
+			<td><%=details[i].shortBack%></td>
+		</tr>
+		<%}%>
+	</table>
+	<a href="/adminHome">Back</a>
+</center>
+</body>
+</html>
