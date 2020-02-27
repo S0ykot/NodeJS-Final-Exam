@@ -75,6 +75,53 @@ router.get('/userDetails', function(req, res){
 	}
 });
 
+router.get('/deleteUser/:id', function(req, res){
+	
+	if(req.cookies['token'] == 'admin'){
+		var ID = req.params.id;
+		userModel.getById(ID, function(result){
+			res.render('adminHome/deleteUser', {details: result});
+		});
+
+	}else{
+		res.redirect('/logout');
+	}
+});
+
+router.get('/addRestau', function(req, res){
+	
+	if(req.cookies['token'] == 'admin'){
+		
+			res.render('adminHome/addRestau');
+	}else{
+		res.redirect('/logout');
+	}
+});
+
+router.post('/addRestau', function(req, res){
+	
+	var info ={
+		name : req.body.name,
+		loc : req.body.loc,
+		sb : req.body.sb
+	};
+
+	if(req.cookies['token'] == 'admin'){
+		userModel.addRestau(info,function(status) {
+			if (status) {
+				res.redirect('/adminHome');
+			}
+			else
+			{
+				res.redirect('/');
+			}
+		});
+			
+	}else{
+		res.redirect('/logout');
+	}
+});
+
 
 
 module.exports = router;

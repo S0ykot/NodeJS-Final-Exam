@@ -98,8 +98,8 @@ module.exports ={
 		});
 	},
 
-	jodAdd : function(user, callback){
-		var sql = "INSERT INTO job VALUES (null,'"+user.comName+"','"+user.title+"','"+user.loc+"',"+user.sal+")";
+	addRestau : function(user, callback){
+		var sql = "INSERT INTO restaurant VALUES (null,'"+user.name+"','"+user.loc+"','"+user.sb+"')";
 		db.execute(sql, function(status){
 			if(status){
 				callback(true);
