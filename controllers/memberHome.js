@@ -25,5 +25,41 @@ router.get('/', function(req, res){
 	}
 });
 
+router.get('/profileUpdate', function(req, res){
+	
+	if(req.cookies['token'] == 'member'){
+		console.log(req.cookies['token']);
+		userModel.getByUname(req.cookies['uname'], function(result){
+			res.render('memberHome/profileUpdate', {details: result});
+		});
+
+	}else{
+		res.redirect('/logout');
+	}
+});
+
+router.post('/profileUpdate', function(req, res){
+	
+	if(req.cookies['token'] == 'member'){
+
+		var info = {
+		uid :req.body.uid,
+		name : req.body.name,
+		username : req.body.username,
+		password : req.body.password,
+		contact : req.body.contact,
+		type : req.body.type
+		};
+
+		userModel.update(info, function(result){
+			res.redirect('/memberHome');
+		});
+
+	}else{
+		res.redirect('/logout');
+	}
+});
+
+
 
 module.exports = router;

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UPDATE Profile</title>
+</head>
+<body>
+<center>
+	<fieldset style="width: 275px">
+		<legend>Update</legend>
+		<h1>Update</h1>
+	<form method="POST" >
+		<b>ID:</b><input type="text" name="uid" readonly value="<%=details.id%>"><br><hr>
+		<b>Name:</b><input type="text" name="name" value="<%=details.name%>"><br><hr>
+		<b>UserName:</b><input type="text" name="username" value="<%=details.username%>"><br><hr>
+		<b>Password:</b><input type="password" name="password" value="<%=details.password%>"><br><hr>
+		<b>Type:</b><input type="text" name="type" placeholder="type admin or member"value="<%=details.type%>"><br><hr>
+		<input type="submit" name="submit" value="Update"><br>
+	</form>
+	</fieldset>
+	<a href="/adminHome">Back</a>
+</center>
+</body>
+</html>

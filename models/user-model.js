@@ -67,7 +67,15 @@ module.exports ={
 		});
 	},
 	update: function(user, callback){
-		var sql = "UPDATE users SET name='"+user.name+"' ,username='"+user.username+"' , password='"+user.password+"',type='"+user.type+"', contact='"+user.contact+"', companyName='"+user.comName+"' where id="+user.uid;
+		var sql="";
+		if (user.type=='admin') {
+			sql = "UPDATE users SET name='"+user.name+"' ,username='"+user.username+"' , password='"+user.password+"',type='"+user.type+"' where id="+user.uid;
+		}
+		else
+		{
+			sql = "UPDATE users SET name='"+user.name+"' ,username='"+user.username+"' , password='"+user.password+"' where id="+user.uid;
+		}
+		console.log(sql);
 		db.execute(sql, function(status){
 			if(status){
 				callback(true);

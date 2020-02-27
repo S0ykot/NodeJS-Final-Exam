@@ -22,7 +22,7 @@ router.post('/', function(req, res){
 
 	userModel.insert(info,function(status){
 		if (status) {
-			res.redirect('login');
+			res.redirect('/login');
 		}
 		else{
 			res.redirect('/');
