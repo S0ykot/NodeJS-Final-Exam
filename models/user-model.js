@@ -145,10 +145,19 @@ module.exports ={
 		});
 	},
 	getAllfood: function(id, callback){
-		var sql = "select f_id,foods.name 'FN',restaurant.name 'RN',location,type from restaurant,foods where restaurant.r_id=foods.r_id";
+		var sql = "select f_id,fname,restaurant.name 'RN',location,type from restaurant,foods where restaurant.r_id=foods.r_id";
 		db.getResult(sql, function(result){
 				callback(result);
 		});
 	},
+
+	globalSearch:function(q,f,callback){
+		var sql = "select foods.name 'FN',restaurant.name 'RN',location,type from restaurant,foods where f like '%"+q+"%'";
+		
+		db.getResult(sql, function(results){
+				callback(results);
+			
+		});
+	}
 
 }

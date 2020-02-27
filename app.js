@@ -10,6 +10,7 @@ var logout			= require('./controllers/logout');
 var signup			= require('./controllers/signup');
 var adminHome		= require('./controllers/adminHome');
 var memberHome		= require('./controllers/memberHome');
+var homepage		= require('./controllers/homepage');
 
 
 
@@ -29,6 +30,7 @@ app.use('/signup',signup);
 app.use('/logout',logout);
 app.use('/adminHome',adminHome);
 app.use('/memberHome',memberHome);
+app.use('/homepage',homepage);
 
 
 //routes
